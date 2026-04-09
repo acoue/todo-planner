@@ -6,17 +6,17 @@ export default function Header({ onNewTask }) {
           <i className="ri-check-line text-white text-sm"></i>
         </div>
         <span className="font-semibold text-stone-800 tracking-tight text-[15px]">
-          Aujourd'hui
+         Todo app et planner
         </span>
       </div>
-      <div className="flex-1" />
+      {/* <div className="flex-1" />
       <button
         onClick={onNewTask}
         className="flex items-center gap-1.5 bg-stone-800 text-white text-xs px-3 py-1.5 rounded-md hover:bg-stone-700 transition-colors"
       >
         <i className="ri-add-line text-sm"></i>
         Nouvelle tâche
-      </button>
+      </button> */}
     </header>
   );
 }

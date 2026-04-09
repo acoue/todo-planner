@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { projectColor } from "../utils/projectColor";
 
 function LabelSection({ title, icon, items, type, onAdd, onRemove }) {
   const [input, setInput] = useState("");
@@ -18,14 +19,15 @@ function LabelSection({ title, icon, items, type, onAdd, onRemove }) {
         </span>
       </div>
 
-      <div className="flex flex-wrap gap-1.5 mb-3 min-h-[24px]">
+      <div className="flex flex-wrap gap-1.5 mb-3 min-h-6">
         {items.length === 0 && (
           <span className="text-xs text-stone-300 italic">Aucun élément</span>
         )}
         {items.map((item) => (
           <span
             key={item}
-            className="inline-flex items-center gap-1 bg-blue-100 text-stone-700 text-xs px-2 py-0.5 rounded-xs group"
+            className="inline-flex items-center gap-1 text-stone-900 text-xs px-2 py-0.5 rounded-xs group"
+            style={{ background: projectColor(item).bar , opacity: 0.8 }}
           >
             {item}
             <button

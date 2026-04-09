@@ -1,4 +1,11 @@
-export default function TaskList({ tasks, loading, onEdit, onDelete, onToggle, onNewTask }) {
+export default function TaskList({
+  tasks,
+  loading,
+  onEdit,
+  onDelete,
+  onToggle,
+  onNewTask,
+}) {
   const today = new Date().toLocaleDateString("fr-FR", {
     weekday: "long",
     day: "numeric",
@@ -11,23 +18,26 @@ export default function TaskList({ tasks, loading, onEdit, onDelete, onToggle, o
   return (
     <main className="flex-1 overflow-y-auto p-6">
       <div className="max-xl mx-auto">
-
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-lg font-semibold text-stone-800 capitalize">{today}</h2>
+            <h2 className="text-lg font-semibold text-stone-800 capitalize">
+              {today}
+            </h2>
             {!loading && (
               <p className="text-xs text-stone-400 mt-0.5">
-                {todo.length} en cours · {done.length} terminée{done.length > 1 ? "s" : ""}
+                {todo.length} en cours · {done.length} terminée
+                {done.length > 1 ? "s" : ""}
               </p>
             )}
           </div>
           <button
             onClick={onNewTask}
-            className="w-8 h-8 flex items-center justify-center rounded-xs bg-stone-800 text-white hover:bg-stone-700 transition-colors"
+            className="flex items-center gap-1.5 bg-stone-800 text-white text-xs px-3 py-1.5 rounded-md hover:bg-stone-700 transition-colors"
             title="Nouvelle tâche"
           >
             <i className="ri-add-line"></i>
+            Nouvelle tâche
           </button>
         </div>
 
@@ -62,7 +72,13 @@ export default function TaskList({ tasks, loading, onEdit, onDelete, onToggle, o
               ) : (
                 <ul className="flex flex-col gap-2">
                   {todo.map((task) => (
-                    <TaskItem key={task.id} task={task} onEdit={onEdit} onDelete={onDelete} onToggle={onToggle} />
+                    <TaskItem
+                      key={task.id}
+                      task={task}
+                      onEdit={onEdit}
+                      onDelete={onDelete}
+                      onToggle={onToggle}
+                    />
                   ))}
                 </ul>
               )}
@@ -81,7 +97,13 @@ export default function TaskList({ tasks, loading, onEdit, onDelete, onToggle, o
                 </div>
                 <ul className="flex flex-col gap-2">
                   {done.map((task) => (
-                    <TaskItem key={task.id} task={task} onEdit={onEdit} onDelete={onDelete} onToggle={onToggle} />
+                    <TaskItem
+                      key={task.id}
+                      task={task}
+                      onEdit={onEdit}
+                      onDelete={onDelete}
+                      onToggle={onToggle}
+                    />
                   ))}
                 </ul>
               </section>
@@ -103,11 +125,13 @@ export default function TaskList({ tasks, loading, onEdit, onDelete, onToggle, o
 
 function TaskItem({ task, onEdit, onDelete, onToggle }) {
   return (
-    <li className={`group border rounded-lg px-4 py-3 flex items-start gap-3 transition-colors ${
-      task.done
-        ? "bg-stone-50 border-stone-200"
-        : "bg-white border-stone-200 hover:border-stone-300"
-    }`}>
+    <li
+      className={`group border rounded-lg px-4 py-3 flex items-start gap-3 transition-colors ${
+        task.done
+          ? "bg-stone-50 border-stone-200"
+          : "bg-white border-stone-200 hover:border-stone-300"
+      }`}
+    >
       {/* Checkbox */}
       <button
         onClick={() => onToggle(task.id, task.done)}
@@ -123,15 +147,19 @@ function TaskItem({ task, onEdit, onDelete, onToggle }) {
 
       {/* Content */}
       <div className="flex-1 min-w-0">
-        <p className={`text-sm font-medium leading-snug transition-colors ${
-          task.done ? "text-stone-400 line-through" : "text-stone-800"
-        }`}>
+        <p
+          className={`text-sm font-medium leading-snug transition-colors ${
+            task.done ? "text-stone-400 line-through" : "text-stone-800"
+          }`}
+        >
           {task.title}
         </p>
         {task.description && (
-          <p className={`text-xs mt-0.5 leading-relaxed line-clamp-2 ${
-            task.done ? "text-stone-300" : "text-stone-400"
-          }`}>
+          <p
+            className={`text-xs mt-0.5 leading-relaxed line-clamp-2 ${
+              task.done ? "text-stone-300" : "text-stone-400"
+            }`}
+          >
             {task.description}
           </p>
         )}
@@ -176,17 +204,31 @@ function PriorityBadge({ priority }) {
   let cls = "bg-stone-100 text-stone-500";
   let icon = "ri-flag-2-line";
 
-  if (lower.includes("urgent") || lower.includes("haute") || lower.includes("high")) {
+  if (
+    lower.includes("urgent") ||
+    lower.includes("haute") ||
+    lower.includes("high")
+  ) {
     cls = "bg-red-50 text-red-500";
     icon = "ri-flag-2-fill";
-  } else if (lower.includes("normal") || lower.includes("moyenne") || lower.includes("medium")) {
+  } else if (
+    lower.includes("normal") ||
+    lower.includes("moyenne") ||
+    lower.includes("medium")
+  ) {
     cls = "bg-amber-50 text-amber-600";
-  } else if (lower.includes("faible") || lower.includes("low") || lower.includes("basse")) {
+  } else if (
+    lower.includes("faible") ||
+    lower.includes("low") ||
+    lower.includes("basse")
+  ) {
     cls = "bg-emerald-50 text-emerald-600";
   }
 
   return (
-    <span className={`inline-flex items-center gap-1 text-[12px] px-2 py-0.5 rounded-xs font-medium ${cls}`}>
+    <span
+      className={`inline-flex items-center gap-1 text-[12px] px-2 py-0.5 rounded-xs font-medium ${cls}`}
+    >
       <i className={`${icon} text-[12px]`}></i>
       {priority}
     </span>
