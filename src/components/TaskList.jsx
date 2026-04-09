@@ -138,8 +138,8 @@ function TaskItem({ task, onEdit, onDelete, onToggle }) {
         {!task.done && (
           <div className="flex gap-1.5 mt-2 flex-wrap">
             {task.project && (
-              <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 text-[11px] px-2 py-0.5 rounded-xs font-medium">
-                <i className="ri-folder-3-line text-[10px]"></i>
+              <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 text-[12px] px-2 py-0.5 rounded-xs font-medium">
+                <i className="ri-folder-3-line text-[12px]"></i>
                 {task.project}
               </span>
             )}
@@ -186,8 +186,8 @@ function PriorityBadge({ priority }) {
   }
 
   return (
-    <span className={`inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-xs font-medium ${cls}`}>
-      <i className={`${icon} text-[10px]`}></i>
+    <span className={`inline-flex items-center gap-1 text-[12px] px-2 py-0.5 rounded-xs font-medium ${cls}`}>
+      <i className={`${icon} text-[12px]`}></i>
       {priority}
     </span>
   );
