@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // App sans auth : lecture/écriture ouverte
+    // À restreindre si tu ajoutes une auth plus tard
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
